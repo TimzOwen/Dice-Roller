@@ -1,13 +1,16 @@
 package com.codewithtimzowen.diceroller
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
-import java.util.Random
+import androidx.appcompat.app.AppCompatActivity
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
+
+    lateinit var diceImage : ImageView // global and uses lanteint to make sure it will be assigned later
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -18,13 +21,14 @@ class MainActivity : AppCompatActivity() {
         //set an onclick listener to action on the button
         rollButton.setOnClickListener {
             rollDice()
-            Toast.makeText(this,"Button click",Toast.LENGTH_LONG).show()
+            Toast.makeText(this,"Dice Rolled",Toast.LENGTH_LONG).show()
         }
+        diceImage = findViewById(R.id.ivRoll)
     }
 
     private fun rollDice(){
 
-        // find the image and use when to replace with the right image
+        // find the image and use when to replace with the right image (png and xml)
         val rolledImage = when (Random().nextInt(6) + 1){
             1 -> R.drawable.dice_1
             2 -> R.drawable.dice_2
@@ -34,9 +38,7 @@ class MainActivity : AppCompatActivity() {
             else -> R.drawable.dice_6
         }
 
-        // find the image and set its resource IDs
-        val ivDice : ImageView = findViewById(R.id.ivRoll)
-        ivDice.setImageResource(rolledImage)
+        diceImage.setImageResource(rolledImage)
 
     }
 
