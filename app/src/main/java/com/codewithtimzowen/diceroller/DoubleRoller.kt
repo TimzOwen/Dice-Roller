@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 class DoubleRoller : AppCompatActivity() {
 
     lateinit var imageView : ImageView
-    lateinit var btnRoll : Button
+    private lateinit var btnRoll : Button
     lateinit var imageview2 : ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,6 +17,7 @@ class DoubleRoller : AppCompatActivity() {
 
         imageView = findViewById(R.id.ivRoll2)
         imageview2 = findViewById(R.id.ivRoll)
+        btnRoll = findViewById(R.id.btn_roll)
 
         btnRoll.setOnClickListener {
             rollDice()
