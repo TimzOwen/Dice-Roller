@@ -1,15 +1,16 @@
 package com.codewithtimzowen.diceroller
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var diceImage : ImageView // global and uses lanteint to make sure it will be assigned later
+    lateinit var roll2 : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,9 +22,14 @@ class MainActivity : AppCompatActivity() {
         //set an onclick listener to action on the button
         rollButton.setOnClickListener {
             rollDice()
-            Toast.makeText(this,"Dice Rolled",Toast.LENGTH_LONG).show()
         }
+        // find the image view
         diceImage = findViewById(R.id.ivRoll)
+
+        roll2 = findViewById(R.id.btn_roll2)
+        roll2.setOnClickListener {
+            startActivity(Intent(this,DoubleRoller::class.java))
+        }
     }
 
     private fun rollDice(){
